@@ -1,0 +1,64 @@
+﻿<Page x:Class="WpfApp10.Pages.LVUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp10.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LVUser">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <UniformGrid Columns="3" Rows="0">
+            <TextBox Margin="10" FontSize="15"/>
+            <ComboBox Margin="10" FontSize="15">
+                <ComboBoxItem Content="По Убыванию (цена)"/>
+                <ComboBoxItem Content="По Возрастанию (цена)"/>
+            </ComboBox>
+            <ComboBox Margin="10" FontSize="15">
+                <ComboBoxItem Content="По Убыванию (скидка)"/>
+            </ComboBox>
+        </UniformGrid>
+
+        <ListView Name="LV_User" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="/Resources/no_photo.png" Width="150" Height="100" VerticalAlignment="Top" HorizontalAlignment="Center" />
+                        <TextBlock Text="Изображение отсутствует" Width="150" Height="100" VerticalAlignment="Top" Margin="0,40,0,0"/>
+                        <Image Source="{Binding MainImage}" Width="150" Height="150" VerticalAlignment="Top"/>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Margin="5">
+                <Run Text="{Binding Title}" FontSize="20"/>
+                            </TextBlock>
+                            <TextBlock Margin="5">
+                <Run Text="Стоимость услуги:" FontSize="20"/>
+                <Run Text="{Binding Cost}" FontSize="20"/>
+                <Run Text="рублей" FontSize="20"/>
+                            </TextBlock>
+                            <TextBlock Margin="5">
+                <Run Text="Скидка" FontSize="20"/>
+                <Run Text="{Binding Discount}" FontSize="20"/>
+                <Run Text="%" FontSize="20"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>
